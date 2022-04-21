@@ -14,3 +14,18 @@ tar -xvzf apache-zookeeper-3.7.0-bin.tar.gz
 client reference : https://www.baeldung.com/java-zookeeper 
 
 server side command and reference : https://zookeeper.apache.org/doc/r3.5.4-beta/zookeeperStarted.html#sc_RunningReplicatedZooKeeper
+
+commands
+
+start server
+bin/zkServer.sh start
+
+stop server
+bin/zkServer.sh stop
+
+use CLI
+
+bin/zkCli.sh
+
+check status (leader/follower mode)
+bin/zkServer.sh status
