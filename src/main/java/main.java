@@ -6,7 +6,7 @@ import java.io.IOException;
 public class main {
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         BasicConfigurator.configure();
-        ZKManager zk = new ZKManagerImpl("34.106.3.246");
+        ZKManager zk = new ZKManagerImpl("34.106.179.93");
         String result= (String) zk.getZNodeData("/test",true);
         System.out.println("result : "+result);
     }
