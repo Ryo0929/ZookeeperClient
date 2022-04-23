@@ -7,7 +7,11 @@ public class main {
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         BasicConfigurator.configure();
         ZKManager zk = new ZKManagerImpl("34.106.179.93");
-        String result= (String) zk.getZNodeData("/test",true);
-        System.out.println("result : "+result);
+//        String result= (String) zk.getZNodeData("/test",true);
+//        System.out.println("result : "+result);
+        byte[] s = "mm".getBytes();
+        zk.create("/test2", s);
+        String result= (String) zk.getZNodeData("/test2",true);
+        System.out.println("result : " + result);
     }
 }
