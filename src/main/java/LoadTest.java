@@ -20,7 +20,7 @@ public class LoadTest {
         lb = new LoadBalancer();
     }
 
-    public void writeTest(int st, int num) throws KeeperException, InterruptedException {
+    public void writeTest(int st, int num, int tag) throws KeeperException, InterruptedException {
         ZKManager curr;
 
         // Get current time
@@ -28,7 +28,7 @@ public class LoadTest {
 
         for (int i = st; i < st + num; i++) {
             // Schema choose
-            curr = lb.random();
+            curr = lb.chooseMethod(tag);
 
             String key = String.valueOf(i);
             key = "/" + key;
@@ -50,7 +50,7 @@ public class LoadTest {
         System.out.println("The process of " + num + " set() operation takes" + elapsedTimeMillis + " Seconds.");
     }
 
-    public void readTest(int st, int num) throws KeeperException, InterruptedException, UnsupportedEncodingException {
+    public void readTest(int st, int num, int tag) throws KeeperException, InterruptedException, UnsupportedEncodingException {
         ZKManager curr;
 
         // Get current time
@@ -58,7 +58,8 @@ public class LoadTest {
 
         for (int i = st; i < st + num; i++) {
             // Schema choose
-            curr = lb.random();
+//            curr = lb.random();
+            curr = lb.chooseMethod(tag);
 
             String key = String.valueOf(i);
             key = "/" + key;
@@ -83,7 +84,7 @@ public class LoadTest {
         LoadTest test = new LoadTest("34.106.179.93");
 
 //        test.writeTest(65, 20);
-        test.readTest(65, 20);
+        test.readTest(65, 20, 1);
 //        test.readTest(0, 5);
     }
 }
